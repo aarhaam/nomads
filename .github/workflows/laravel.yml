@@ -26,20 +26,3 @@ jobs:
       run: chmod -R 777 storage bootstrap/cache
     - name: Unit Test
       run: vendor/bin/phpunit
-
-  deploy : 
-
-    needs: [tests]
-    runs-on : ubuntu-latest
-
-    steps: 
-    - name: 'Deploy servers'
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}  
-        script: |
-          cd /var/www/nomads
-          ls -lah
