@@ -33,7 +33,7 @@ jobs:
     runs-on : ubuntu-latest
 
     steps: 
-    - name: 'Deploy server'
+    - name: 'Deploy servers'
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
