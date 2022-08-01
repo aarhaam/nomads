@@ -40,8 +40,9 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
-        passphrase: ${{ secrets.PASSPHRASE }}
         port: ${{ secrets.PORT }}
         script: |
           cd /var/www/nomads
-          ls -lah
+          git pull origin master
+          composer update -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+          php artisan migrate
